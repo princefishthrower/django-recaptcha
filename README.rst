@@ -110,6 +110,20 @@ To allow for runtime specification of keys you can optionally pass the
 
 If specified, these parameters will be used instead of your reCAPTCHA project settings.
 
+If you are using a custom template for your form, you need to include the captcha field and errors. For example:
+
+.. code-block:: htmldjango
+
+    {% extends "layout.html" %}
+    {% load static %}
+    {% load i18n %}
+    {% block content %}
+    <form enctype="multipart/form-data" method="post" action="{{request.some_action_here}}">
+        {% ... lots of form markup here ... %}
+        {{form.captcha.errors}}{{form.captcha}}
+    </form>
+    {% endblock %}
+
 Widgets
 ~~~~~~~
 
